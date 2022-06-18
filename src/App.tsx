@@ -1,9 +1,5 @@
-function Application() {
-  return (
-    <div className="App">
-      Money Divider
-    </div>
-  );
+function Application(): React.ReactElement {
+  return <div className="App">Money Divider</div>;
 }
 
 export default Application;

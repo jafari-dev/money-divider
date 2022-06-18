@@ -1,0 +1,104 @@
+{
+  "root": true,
+  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+  "plugins": ["@typescript-eslint", "import", "prettier"],
+  "globals": {
+    "React": "readonly",
+    "JSX": "readonly"
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "ignorePatterns": [
+    "build/**/*",
+    "dist/**/*",
+    "node_modules/**/*",
+    "public/**/*",
+    "yarn/**/*"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "overrides": [
+    {
+      "files": ["src/**/*.{ts,tsx}"],
+      "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+      ],
+      "parserOptions": {
+        "ecmaFeatures": { "jsx": true },
+        "ecmaVersion": 2022,
+        "project": ["tsconfig.json"],
+        "sourceType": "module",
+        "warnOnUnsupportedTypeScriptVersion": false
+      },
+      "rules": {
+        "@typescript-eslint/no-invalid-this": ["error"],
+        "@typescript-eslint/no-useless-constructor": ["error"]
+      }
+    }
+  ],
+  "rules": {
+    "eqeqeq": ["error", "always", { "null": "ignore" }],
+    "react/no-unescaped-entities": "off",
+    "no-console": "warn",
+    "no-extra-semi": "error",
+    "no-undef": "error",
+    "no-unsafe-negation": "error",
+    "default-case": "error",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["warn"],
+    "comma-spacing": "error",
+    "newline-before-return": "error",
+    "no-useless-return": "error",
+    "object-shorthand": "error",
+    "no-cond-assign": "error",
+    "no-empty": ["error", { "allowEmptyCatch": true }],
+    "yoda": "error",
+    "no-negated-condition": "error",
+    "max-params": ["error", 3],
+    "no-multi-spaces": "error",
+    "prefer-const": "error",
+    "prefer-spread": "error",
+    "prefer-template": "error",
+    "no-duplicate-imports": "error",
+    "import/newline-after-import": ["error", { "count": 1 }],
+    "no-invalid-this": "off",
+    "no-useless-call": "error",
+    "no-useless-catch": "error",
+    "no-useless-computed-key": "error",
+    "no-useless-concat": "error",
+    "no-useless-constructor": "off",
+    "eol-last": "error",
+    "padding-line-between-statements": ["error",
+      {
+        "blankLine": "always",
+        "prev": ["const", "let", "var"],
+        "next": "*"
+      },
+      {
+        "blankLine": "any",
+        "prev": ["const", "let", "var"],
+        "next": ["const", "let", "var"]
+      }
+    ],
+    "no-useless-rename": [
+      "error",
+      {
+        "ignoreDestructuring": false,
+        "ignoreExport": false,
+        "ignoreImport": false
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "alphabetize": { "order": "asc" },
+        "groups": [["builtin", "external", "unknown"], ["internal", "parent", "index", "sibling"]],
+        "newlines-between": "always"
+      }
+    ],
+    "prettier/prettier": "error"
+  }
+}

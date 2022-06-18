@@ -1,10 +1,10 @@
-import { createRoot } from 'react-dom/client';
-import Application from './App';
-import reportWebVitals from './reportWebVitals';
+import { createRoot } from "react-dom/client";
 
-const root = createRoot(
-  document.getElementById('root') as HTMLElement
-);
+import Application from "./App";
+import reportWebVitals from "./reportWebVitals";
+
+const root = createRoot(document.getElementById("root") as HTMLElement);
+
 root.render(<Application />);
 
 // If you want to start measuring performance in your app, pass a function
