@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "#": ["./src/lib"],
+      "#/*": ["./src/lib/*"],
+      "@stores": ["./src/stores"],
+      "@stores/*": ["./src/stores/*"],
+      "_": ["./src/assets"],
+      "_/*": ["./src/assets/*"],
+      "@components": ["./src/components"],
+      "@components/*": ["./src/components/*"],
+      "@layouts": ["./src/layouts"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@modules": ["./src/modules"],
+      "@modules/*": ["./src/modules/*"],
+    }
+  }
+}

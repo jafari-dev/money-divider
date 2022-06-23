@@ -1,3 +1,6 @@
+import { CurrencyUnit } from "#/types";
+import { currencyUnitLabels } from "#/utilities";
+import { InputError } from "@components";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Button,
@@ -14,9 +17,6 @@ import {
 import { memo, useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { InputError } from "../../../../components";
-import { currencyUnitLabels } from "../../../../utilities";
-import { CurrencyUnit } from "../../../../utilities/types";
 import { initializationSchema, FormInitializationData } from "../../utilities/forms-schema";
 import TermsLink from "./terms-link";
 

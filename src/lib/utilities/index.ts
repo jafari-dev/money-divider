@@ -1,4 +1,4 @@
-import { CurrencyUnit } from "./types";
+import { CurrencyUnit } from "#/types";
 
 export function generateId() {
   const ALPHA_NUMERICS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

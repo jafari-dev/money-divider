@@ -1,9 +1,9 @@
 import { Global } from "@emotion/react";
+import { TopBar } from "@layouts";
+import { Settings } from "@modules";
 import { ThemeProvider } from "@mui/material";
 import { BrowserRouter } from "react-router-dom";
 
-import { TopBar } from "./layouts";
-import { Settings } from "./modules";
 import { globalStyles } from "./styles";
 import { theme } from "./theme";
 

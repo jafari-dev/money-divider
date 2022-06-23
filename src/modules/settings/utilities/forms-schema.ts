@@ -1,6 +1,5 @@
+import { CurrencyUnit } from "#/types";
 import { z } from "zod";
-
-import { CurrencyUnit } from "../../../utilities/types";
 
 export const initializationSchema = z.object({
   fullName: z
