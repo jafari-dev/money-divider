@@ -1,6 +1,5 @@
 import { css } from "@emotion/react";
-
-import { importFonts } from "./assets/fonts";
+import { importFonts } from "_/fonts";
 
 export const globalStyles = css`
   ${importFonts};

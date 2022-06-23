@@ -1,4 +1,4 @@
-import { MajorPath } from "./types";
+import { MajorPath } from "#/types";
 
 function removePaddingSlashes(path: string): string {
   // Path without any starting or ending slash

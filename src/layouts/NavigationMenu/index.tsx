@@ -1,10 +1,10 @@
+import { MajorPath as MP } from "#/types";
+import { parsePath, isMajorPathValid } from "#/utilities/location";
 import { Group, InsertChart, MonetizationOn, Bookmark } from "@mui/icons-material";
 import { BottomNavigationAction } from "@mui/material";
 import { memo, useState, useCallback, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { parsePath, isMajorPathValid } from "../../utilities/location";
-import { MajorPath as MP } from "../../utilities/types";
 import { StyledBottomNavigation } from "./styles";
 
 function BottomNavigationMenu(): React.ReactElement {

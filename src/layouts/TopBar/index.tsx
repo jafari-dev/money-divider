@@ -7,9 +7,9 @@ import {
   useTheme,
   ButtonGroup,
 } from "@mui/material";
+import { Logo } from "_/images";
 import { memo, useCallback, useRef, useState } from "react";
 
-import { Logo } from "../../assets/images";
 import { StyledBrand, StyledToolbar, StyledMenu, StyledMenuItem, StyledBurgurIcon } from "./styles";
 
 function TopBar(): React.ReactElement {
