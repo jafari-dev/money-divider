@@ -1,16 +1,19 @@
 import { Container, Box } from "@mui/material";
-import { memo } from "react";
+import { SettingsStoreType, StoreProvider } from "@stores/settings";
+import { observer } from "mobx-react-lite";
 
 import { InitializerForm } from "./screens";
 
-function Settings() {
+function Settings({ store }: { store: SettingsStoreType }) {
   return (
-    <Container>
-      <Box padding={2}>
-        <InitializerForm />
-      </Box>
-    </Container>
+    <StoreProvider value={store}>
+      <Container>
+        <Box padding={2}>
+          <InitializerForm />
+        </Box>
+      </Container>
+    </StoreProvider>
   );
 }
 
-export default memo(Settings);
+export default observer(Settings);

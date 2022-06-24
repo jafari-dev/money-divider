@@ -2,6 +2,7 @@ import { Global } from "@emotion/react";
 import { TopBar } from "@layouts";
 import { Settings } from "@modules";
 import { ThemeProvider } from "@mui/material";
+import { settingsStore } from "@stores";
 import { BrowserRouter } from "react-router-dom";
 
 import { globalStyles } from "./styles";
@@ -13,7 +14,7 @@ function Application(): React.ReactElement {
       <ThemeProvider theme={theme}>
         <Global styles={globalStyles} />
         <TopBar />
-        <Settings />
+        <Settings store={settingsStore} />
       </ThemeProvider>
     </BrowserRouter>
   );

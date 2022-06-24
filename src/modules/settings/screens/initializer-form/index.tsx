@@ -14,13 +14,17 @@ import {
   Checkbox,
   FormLabel,
 } from "@mui/material";
-import { memo, useCallback, useState } from "react";
+import { useStore } from "@stores/settings";
+import { observer } from "mobx-react-lite";
+import { useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { initializationSchema, FormInitializationData } from "../../utilities/forms-schema";
 import TermsLink from "./terms-link";
 
 function InitializerForm() {
+  const store = useStore();
+
   const [isTermsApproved, setIsTermsApproved] = useState(false);
   const toggleTermsApproval = useCallback(() => setIsTermsApproved((previous) => !previous), []);
 
@@ -36,9 +40,16 @@ function InitializerForm() {
     (event: React.FormEvent) => {
       event.preventDefault();
 
-      void handleSubmit((values) => values)(event);
+      void handleSubmit((values) => {
+        if (isTermsApproved) {
+          const { fullName, phone, password, defaultCurrencyUnit } = values;
+
+          store.setMainUser({ fullName, phone, password });
+          store.setDefaultCurrencyUnit(defaultCurrencyUnit);
+        }
+      })(event);
     },
-    [handleSubmit]
+    [handleSubmit, isTermsApproved]
   );
 
   return (
@@ -120,4 +131,4 @@ function InitializerForm() {
   );
 }
 
-export default memo(InitializerForm);
+export default observer(InitializerForm);
