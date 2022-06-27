@@ -23,7 +23,7 @@ function TopBar(): React.ReactElement {
   const closeMenu = useCallback(() => setIsMenuOpen(false), []);
 
   return (
-    <AppBar position="static" sx={{ marginBottom: "8px" }}>
+    <AppBar position="static">
       <Container maxWidth="xl">
         <StyledToolbar>
           <StyledBrand to="/">
