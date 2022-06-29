@@ -1,6 +1,6 @@
 import { Global } from "@emotion/react";
-import { TopBar, NavigationMenu } from "@layouts";
-import { ThemeProvider } from "@mui/material";
+import { TopBar, NavigationMenu, GlobalWrapper, Home } from "@layouts";
+import { Container, ThemeProvider } from "@mui/material";
 import { BrowserRouter } from "react-router-dom";
 
 import { globalStyles } from "./styles";
@@ -12,6 +12,11 @@ function Application(): React.ReactElement {
       <ThemeProvider theme={theme}>
         <Global styles={globalStyles} />
         <TopBar />
+        <Container>
+          <GlobalWrapper>
+            <Home />
+          </GlobalWrapper>
+        </Container>
         <NavigationMenu />
       </ThemeProvider>
     </BrowserRouter>
