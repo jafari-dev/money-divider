@@ -11,6 +11,10 @@ export const globalStyles = css`
     font-family: Ubuntu, sans-serif;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   * {
     box-sizing: border-box;
   }
