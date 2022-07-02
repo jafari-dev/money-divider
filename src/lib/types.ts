@@ -4,3 +4,8 @@ export enum MajorPath {
   Bookmarks = "bookmarks",
   People = "people",
 }
+
+export enum CurrencyUnit {
+  IRT = "Iranian Toman",
+  USD = "United States Dollar",
+}
