@@ -6,3 +6,4 @@ export { ReactComponent as Charts } from "./charts.svg";
 export { ReactComponent as Lock } from "./lock.svg";
 export { ReactComponent as Code } from "./code.svg";
 export { ReactComponent as Server } from "./server.svg";
+export { ReactComponent as Empty } from "./empty.svg";
