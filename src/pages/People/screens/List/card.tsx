@@ -1,10 +1,10 @@
 import { getAvatarName } from "#/utilities";
-import { Visibility, Edit, Delete } from "@mui/icons-material";
+import { Visibility } from "@mui/icons-material";
 import { Avatar, Box, Button } from "@mui/material";
 import { PersonStoreType } from "@stores";
 import { memo } from "react";
 
-import { EditPersonButton } from "..";
+import { EditPersonButton, DeletePersonButton } from "..";
 import { StyledCard, StyledCardContent, StyledText } from "./styles";
 
 interface Props {
@@ -30,9 +30,7 @@ function PersonCard({ person, avatarColor }: Props): React.ReactElement {
         <Button size="small" color="primary">
           <Visibility />
         </Button>
-        <Button size="small" color="error">
-          <Delete />
-        </Button>
+        <DeletePersonButton personId={person.id} />
       </Box>
     </StyledCard>
   );

@@ -1,10 +1,10 @@
 import { getAvatarName } from "#/utilities";
-import { Visibility, Delete } from "@mui/icons-material";
+import { Visibility } from "@mui/icons-material";
 import { ListItemAvatar, ListItemText, Avatar, Grid, Button } from "@mui/material";
 import { PersonStoreType } from "@stores";
 import { memo } from "react";
 
-import { EditPersonButton } from "..";
+import { DeletePersonButton, EditPersonButton } from "..";
 import { StyledListItem } from "./styles";
 
 interface Props {
@@ -37,9 +37,7 @@ function PersonRow({ person, avatarColor }: Props): React.ReactElement {
         <Visibility />
       </Button>
       <EditPersonButton personId={person.id} />
-      <Button size="small" color="error">
-        <Delete />
-      </Button>
+      <DeletePersonButton personId={person.id} />
     </StyledListItem>
   );
 }
