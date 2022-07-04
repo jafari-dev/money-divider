@@ -9,3 +9,11 @@ export function generateId() {
 
   return `${randomString}-${currentDate}`;
 }
+
+export function getAvatarName(name: string): string {
+  const [firstWord, secondWord] = name.split(" ");
+  const firstLetter = firstWord[0].toUpperCase();
+  const secondLetter = secondWord ? secondWord[0].toUpperCase() : "";
+
+  return firstLetter + secondLetter;
+}
