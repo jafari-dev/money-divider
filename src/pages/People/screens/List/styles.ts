@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Card, CardContent, Typography, ListItem, Button } from "@mui/material";
+import { Card, CardContent, Typography, ListItem } from "@mui/material";
 
 export const StyledText = styled(Typography)`
   text-align: center;
@@ -26,10 +26,10 @@ export const StyledCardContent = styled(CardContent)`
 
 export const StyledListItem = styled(ListItem)`
   padding-inline: 0;
-`;
 
-export const StyledIconButton = styled(Button)`
-  margin-inline: 4px;
+  button {
+    margin-inline: 4px;
+  }
 `;
 
 export const StyledDiv = styled.div`

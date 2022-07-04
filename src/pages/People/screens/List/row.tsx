@@ -1,10 +1,11 @@
 import { getAvatarName } from "#/utilities";
-import { Visibility, Edit, Delete } from "@mui/icons-material";
-import { ListItemAvatar, ListItemText, Avatar, Grid } from "@mui/material";
+import { Visibility, Delete } from "@mui/icons-material";
+import { ListItemAvatar, ListItemText, Avatar, Grid, Button } from "@mui/material";
 import { PersonStoreType } from "@stores";
 import { memo } from "react";
 
-import { StyledListItem, StyledIconButton } from "./styles";
+import { EditPersonButton } from "..";
+import { StyledListItem } from "./styles";
 
 interface Props {
   person: PersonStoreType;
@@ -32,15 +33,13 @@ function PersonRow({ person, avatarColor }: Props): React.ReactElement {
           <ListItemText>{phoneNumber}</ListItemText>
         </Grid>
       </Grid>
-      <StyledIconButton size="small" color="primary">
+      <Button size="small" color="primary">
         <Visibility />
-      </StyledIconButton>
-      <StyledIconButton size="small" color="info">
-        <Edit />
-      </StyledIconButton>
-      <StyledIconButton size="small" color="error">
+      </Button>
+      <EditPersonButton personId={person.id} />
+      <Button size="small" color="error">
         <Delete />
-      </StyledIconButton>
+      </Button>
     </StyledListItem>
   );
 }

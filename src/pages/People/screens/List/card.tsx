@@ -4,6 +4,7 @@ import { Avatar, Box, Button } from "@mui/material";
 import { PersonStoreType } from "@stores";
 import { memo } from "react";
 
+import { EditPersonButton } from "..";
 import { StyledCard, StyledCardContent, StyledText } from "./styles";
 
 interface Props {
@@ -25,9 +26,7 @@ function PersonCard({ person, avatarColor }: Props): React.ReactElement {
         <StyledText>{phoneNumber}</StyledText>
       </StyledCardContent>
       <Box display="flex" justifyContent="space-between" padding={1}>
-        <Button size="small" color="info">
-          <Edit />
-        </Button>
+        <EditPersonButton personId={person.id} />
         <Button size="small" color="primary">
           <Visibility />
         </Button>
