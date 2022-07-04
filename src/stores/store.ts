@@ -1,7 +1,8 @@
+import { Person } from "#/types";
 import { types, Instance } from "mobx-state-tree";
 
 import { GroupStore, GroupStoreType } from "./group";
-import { PersonStore, PersonStoreType } from "./person";
+import { PersonStore } from "./person";
 
 export const Store = types
   .model("Group", {
@@ -18,12 +19,10 @@ export const Store = types
     stopEncryption(previousEncryptionKey: string): void {
       this.setEncryptionKey(previousEncryptionKey, "");
     },
-    addPerson(person: PersonStoreType): void {
-      const isPersonDuplicate = self.persons.find(({ id }) => id === person.id) != null;
+    addPerson(personInfo: Person): void {
+      const person = PersonStore.create({ ...personInfo });
 
-      if (!isPersonDuplicate) {
-        self.persons.push(person);
-      }
+      self.persons.push(person);
     },
     deletePerson(id: string): void {
       const matchedPerson = self.persons.find((person) => person.id === id);
