@@ -1,8 +1,9 @@
-import { Typography, useTheme, useMediaQuery, Button } from "@mui/material";
+import { Typography, useTheme, useMediaQuery } from "@mui/material";
 import { useStore } from "@stores";
 import { Empty } from "_/images";
 import { observer } from "mobx-react-lite";
 
+import { AddPersonButton } from "..";
 import PeopleCards from "./cards-container";
 import PeopleRows from "./rows-container";
 import { StyledDiv } from "./styles";
@@ -17,9 +18,7 @@ function PeopleList() {
       <StyledDiv>
         <Empty />
         <Typography variant="h6">Nothing to show!</Typography>
-        <Button size="large" variant="contained">
-          Add first person
-        </Button>
+        <AddPersonButton firstUser />
       </StyledDiv>
     );
   } else if (isWindowInTabletWidth) {

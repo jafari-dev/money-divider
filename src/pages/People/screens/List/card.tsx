@@ -21,7 +21,7 @@ function PersonCard({ person, avatarColor }: Props): React.ReactElement {
           {getAvatarName(name)}
         </Avatar>
         <StyledText variant="h6">{name}</StyledText>
-        <StyledText>{email}</StyledText>
+        <StyledText>{email ? email : "(No email)"}</StyledText>
         <StyledText>{phoneNumber}</StyledText>
       </StyledCardContent>
       <Box display="flex" justifyContent="space-between" padding={1}>

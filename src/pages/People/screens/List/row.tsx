@@ -26,7 +26,7 @@ function PersonRow({ person, avatarColor }: Props): React.ReactElement {
           <ListItemText>{name}</ListItemText>
         </Grid>
         <Grid item xs={4}>
-          <ListItemText>{email}</ListItemText>
+          <ListItemText>{email ? email : "(No email)"}</ListItemText>
         </Grid>
         <Grid item xs={4}>
           <ListItemText>{phoneNumber}</ListItemText>
