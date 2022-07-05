@@ -12,24 +12,24 @@ export const StyledWrapper = styled.div`
 
 export const StyledImage = styled.img`
   width: 100%;
-  height: auto;
   max-width: 300px;
+  height: auto;
   margin-inline: auto;
 `;
 
 export const StyledHeading = styled(Typography)`
   text-align: center;
   color: ${colors.indigo[800]};
-  font-weight: bold;
   font-size: 28px;
+  font-weight: bold;
 `;
 
 export const StyledText = styled(Typography)`
   text-align: center;
-  color: ${colors.yellow[900]};
-  font-weight: bold;
-  font-size: 24px;
   text-transform: uppercase;
+  color: ${colors.yellow[900]};
+  font-size: 24px;
+  font-weight: bold;
 `;
 
 export const StyledGrid = styled(Grid)`

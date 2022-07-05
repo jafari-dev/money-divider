@@ -14,7 +14,7 @@ function PeopleCards() {
       <AddPersonButton />
       <Grid container spacing={2}>
         {persons.map((person, index) => (
-          <Grid item xs={12} sm={6}>
+          <Grid item key={person.id} xs={12} sm={6}>
             <PersonCard person={person} avatarColor={getAvatarColor(index)} />
           </Grid>
         ))}

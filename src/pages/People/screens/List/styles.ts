@@ -2,12 +2,12 @@ import styled from "@emotion/styled";
 import { Card, CardContent, Typography, ListItem } from "@mui/material";
 
 export const StyledText = styled(Typography)`
-  text-align: center;
-  margin-inline: auto;
-  width: 240px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   overflow: hidden;
+  width: 240px;
+  margin-inline: auto;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 export const StyledCard = styled(Card)`
@@ -36,8 +36,8 @@ export const StyledDiv = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  text-align: center;
   transform: translate(-50%, -50%);
+  text-align: center;
 
   > svg {
     width: 300px;

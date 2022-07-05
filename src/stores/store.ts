@@ -5,7 +5,7 @@ import { GroupStore, GroupStoreType } from "./group";
 import { PersonStore } from "./person";
 
 export const Store = types
-  .model("Group", {
+  .model("Store", {
     encryptionKey: types.maybeNull(types.string),
     persons: types.array(PersonStore),
     groups: types.array(GroupStore),
