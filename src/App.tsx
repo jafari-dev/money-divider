@@ -19,7 +19,7 @@ function Application(): React.ReactElement {
             <GlobalWrapper>
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/people" element={<People />} />
+                <Route path="/people/*" element={<People />} />
               </Routes>
             </GlobalWrapper>
           </Container>
