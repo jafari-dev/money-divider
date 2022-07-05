@@ -2,7 +2,7 @@ import { getAvatarName } from "#/utilities";
 import { Visibility } from "@mui/icons-material";
 import { Avatar, Box, Button } from "@mui/material";
 import { PersonStoreType } from "@stores";
-import { memo } from "react";
+import { observer } from "mobx-react-lite";
 
 import { EditPersonButton, DeletePersonButton } from "..";
 import { StyledCard, StyledCardContent, StyledText } from "./styles";
@@ -36,4 +36,4 @@ function PersonCard({ person, avatarColor }: Props): React.ReactElement {
   );
 }
 
-export default memo(PersonCard);
+export default observer(PersonCard);

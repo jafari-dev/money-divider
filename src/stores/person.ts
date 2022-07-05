@@ -1,3 +1,4 @@
+import { Person } from "#/types";
 import { generateId } from "#/utilities";
 import { types, Instance } from "mobx-state-tree";
 
@@ -9,7 +10,7 @@ export const PersonStore = types
     email: types.maybeNull(types.string),
   })
   .actions((self) => ({
-    edit(info: { name: string; email: string; phoneNumber: string }): void {
+    edit(info: Person): void {
       const { name, email, phoneNumber } = info;
 
       self.name = name;

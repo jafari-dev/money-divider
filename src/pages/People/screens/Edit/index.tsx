@@ -21,10 +21,8 @@ function EditPersonButton({ personId }: Props): React.ReactElement {
   const matchedPerson = store.persons.find(({ id }) => id === personId) as PersonStoreType;
 
   const submitForm = useCallback(
-    (personInfo: Person) => {
-      matchedPerson?.edit(personInfo);
-    },
-    [matchedPerson.id]
+    (personInfo: Person) => matchedPerson.edit(personInfo),
+    [store.persons.map(({ id }) => id).join("|")]
   );
 
   return (
@@ -39,9 +37,9 @@ function EditPersonButton({ personId }: Props): React.ReactElement {
         onHide={hideForm}
         onSumbit={submitForm}
         defaultValues={{
-          name: matchedPerson?.name,
-          phoneNumber: matchedPerson?.phoneNumber,
-          email: matchedPerson?.email ?? "",
+          name: matchedPerson.name,
+          phoneNumber: matchedPerson.phoneNumber,
+          email: matchedPerson.email ?? "",
         }}
       />
     </>

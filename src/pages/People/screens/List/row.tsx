@@ -2,7 +2,7 @@ import { getAvatarName } from "#/utilities";
 import { Visibility } from "@mui/icons-material";
 import { ListItemAvatar, ListItemText, Avatar, Grid, Button } from "@mui/material";
 import { PersonStoreType } from "@stores";
-import { memo } from "react";
+import { observer } from "mobx-react-lite";
 
 import { DeletePersonButton, EditPersonButton } from "..";
 import { StyledListItem } from "./styles";
@@ -42,4 +42,4 @@ function PersonRow({ person, avatarColor }: Props): React.ReactElement {
   );
 }
 
-export default memo(PersonRow);
+export default observer(PersonRow);
