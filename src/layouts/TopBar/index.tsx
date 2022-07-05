@@ -12,7 +12,11 @@ import { memo, useCallback, useRef, useState } from "react";
 
 import { StyledBrand, StyledToolbar, StyledMenu, StyledMenuItem, StyledBurgurIcon } from "./styles";
 
-function TopBar(): React.ReactElement {
+interface Props {
+  onSave: () => void;
+}
+
+function TopBar({ onSave }: Props): React.ReactElement {
   const theme = useTheme();
   const isWindowInSmallWidth = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -63,7 +67,7 @@ function TopBar(): React.ReactElement {
             <ButtonGroup variant="outlined" color="secondary">
               <Button>Reset</Button>
               <Button>Load</Button>
-              <Button>Save</Button>
+              <Button onClick={onSave}>Save</Button>
             </ButtonGroup>
           )}
         </StyledToolbar>
