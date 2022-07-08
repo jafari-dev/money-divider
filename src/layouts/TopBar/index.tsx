@@ -8,15 +8,16 @@ import {
   ButtonGroup,
 } from "@mui/material";
 import { Logo } from "_/images";
-import { memo, useCallback, useRef, useState } from "react";
+import React, { memo, useCallback, useRef, useState } from "react";
 
 import { StyledBrand, StyledToolbar, StyledMenu, StyledMenuItem, StyledBurgurIcon } from "./styles";
 
 interface Props {
   onSave: () => void;
+  onLoadProject: (storeSnapshot: File) => Promise<void>;
 }
 
-function TopBar({ onSave }: Props): React.ReactElement {
+function TopBar({ onSave, onLoadProject }: Props): React.ReactElement {
   const theme = useTheme();
   const isWindowInSmallWidth = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -25,6 +26,17 @@ function TopBar({ onSave }: Props): React.ReactElement {
 
   const openMenu = useCallback(() => setIsMenuOpen(true), []);
   const closeMenu = useCallback(() => setIsMenuOpen(false), []);
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const openFileLoader = useCallback(() => fileInputRef.current?.click(), []);
+  const handleChangeSelectedFile = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const files = event.currentTarget.files;
+
+      if (files) void onLoadProject(files[0]);
+    },
+    [onLoadProject]
+  );
 
   return (
     <AppBar position="static">
@@ -66,12 +78,20 @@ function TopBar({ onSave }: Props): React.ReactElement {
           ) : (
             <ButtonGroup variant="outlined" color="secondary">
               <Button>Reset</Button>
-              <Button>Load</Button>
+              <Button onClick={openFileLoader}>Load</Button>
               <Button onClick={onSave}>Save</Button>
             </ButtonGroup>
           )}
         </StyledToolbar>
       </Container>
+      <input
+        multiple={false}
+        accept="json"
+        style={{ display: "none" }}
+        type="file"
+        ref={fileInputRef}
+        onChange={handleChangeSelectedFile}
+      />
     </AppBar>
   );
 }
