@@ -15,9 +15,10 @@ import { StyledBrand, StyledToolbar, StyledMenu, StyledMenuItem, StyledBurgurIco
 interface Props {
   onSaveStore: () => void;
   onLoadStore: (file: File) => void;
+  onResetStore: () => void;
 }
 
-function TopBar({ onLoadStore, onSaveStore }: Props): React.ReactElement {
+function TopBar({ onLoadStore, onSaveStore, onResetStore }: Props): React.ReactElement {
   const theme = useTheme();
   const isWindowInSmallWidth = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -70,14 +71,14 @@ function TopBar({ onLoadStore, onSaveStore }: Props): React.ReactElement {
                 open={isMenuOpen}
                 onClick={closeMenu}
               >
-                <StyledMenuItem>Reset</StyledMenuItem>
-                <StyledMenuItem>Load</StyledMenuItem>
-                <StyledMenuItem>Save</StyledMenuItem>
+                <StyledMenuItem onClick={onResetStore}>Reset</StyledMenuItem>
+                <StyledMenuItem onClick={openFileLoader}>Load</StyledMenuItem>
+                <StyledMenuItem onClick={onSaveStore}>Save</StyledMenuItem>
               </StyledMenu>
             </>
           ) : (
             <ButtonGroup variant="outlined" color="secondary">
-              <Button>Reset</Button>
+              <Button onClick={onResetStore}>Reset</Button>
               <Button onClick={openFileLoader}>Load</Button>
               <Button onClick={onSaveStore}>Save</Button>
             </ButtonGroup>

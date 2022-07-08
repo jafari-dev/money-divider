@@ -68,6 +68,11 @@ export const Store = types
         }
       } catch {}
     },
+    reset(): void {
+      self.encryptionKey = null;
+      self.groups.clear();
+      self.persons.clear();
+    },
   }));
 
 export type StoreType = Instance<typeof Store>;

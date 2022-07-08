@@ -12,10 +12,11 @@ function Application(): React.ReactElement {
 
   const saveStore = useCallback(() => downloadContent(store.getSchemaAsJSON()), []);
   const loadStore = useCallback((file: File) => void store.loadStoreFromFile(file), []);
+  const resetStore = useCallback(() => store.reset(), []);
 
   return (
     <>
-      <TopBar onSaveStore={saveStore} onLoadStore={loadStore} />
+      <TopBar onSaveStore={saveStore} onLoadStore={loadStore} onResetStore={resetStore} />
       <Container>
         <GlobalWrapper>
           <Routes>
