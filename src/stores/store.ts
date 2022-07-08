@@ -1,5 +1,5 @@
 import { Person } from "#/types";
-import { types, Instance } from "mobx-state-tree";
+import { types, Instance, getSnapshot, applySnapshot } from "mobx-state-tree";
 
 import { GroupStore, GroupStoreType } from "./group";
 import { PersonStore } from "./person";
@@ -44,6 +44,29 @@ export const Store = types
       if (matchedGroup != null) {
         self.groups.remove(matchedGroup);
       }
+    },
+    getSchemaAsJSON(): string {
+      const storeSnapshot = getSnapshot(self);
+
+      return JSON.stringify(storeSnapshot, undefined, 2);
+    },
+    async loadStoreFromFile(file: File): Promise<void> {
+      try {
+        const fileContent = await file.text();
+        const contentAsObject = JSON.parse(fileContent) as Record<string, unknown>;
+
+        const storeKeys = Object.keys(self);
+        const fileKeys = Object.keys(contentAsObject).filter(
+          (key, index, self) => self.indexOf(key) === index
+        );
+
+        // Checks that the keys for the store schema and file schema are the same
+        if (storeKeys.length === fileKeys.length) {
+          if (fileKeys.every((key) => storeKeys.includes(key))) {
+            applySnapshot(self, contentAsObject);
+          }
+        }
+      } catch {}
     },
   }));
 

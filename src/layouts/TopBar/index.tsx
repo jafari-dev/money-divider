@@ -13,11 +13,11 @@ import React, { memo, useCallback, useRef, useState } from "react";
 import { StyledBrand, StyledToolbar, StyledMenu, StyledMenuItem, StyledBurgurIcon } from "./styles";
 
 interface Props {
-  onSave: () => void;
-  onLoadProject: (storeSnapshot: File) => Promise<void>;
+  onSaveStore: () => void;
+  onLoadStore: (file: File) => void;
 }
 
-function TopBar({ onSave, onLoadProject }: Props): React.ReactElement {
+function TopBar({ onLoadStore, onSaveStore }: Props): React.ReactElement {
   const theme = useTheme();
   const isWindowInSmallWidth = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -33,9 +33,9 @@ function TopBar({ onSave, onLoadProject }: Props): React.ReactElement {
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const files = event.currentTarget.files;
 
-      if (files) void onLoadProject(files[0]);
+      if (files != null) onLoadStore(files[0]);
     },
-    [onLoadProject]
+    [onLoadStore]
   );
 
   return (
@@ -79,7 +79,7 @@ function TopBar({ onSave, onLoadProject }: Props): React.ReactElement {
             <ButtonGroup variant="outlined" color="secondary">
               <Button>Reset</Button>
               <Button onClick={openFileLoader}>Load</Button>
-              <Button onClick={onSave}>Save</Button>
+              <Button onClick={onSaveStore}>Save</Button>
             </ButtonGroup>
           )}
         </StyledToolbar>
