@@ -15,3 +15,12 @@ export interface Person {
   phoneNumber: string;
   email: string;
 }
+
+export interface Expense {
+  title: string;
+  description: string;
+  currencyUnit: CurrencyUnit;
+  totalCost: number;
+  payerId: string;
+  debtors: { id: string; amountOfDebt: number }[];
+}

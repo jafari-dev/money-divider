@@ -1,14 +1,14 @@
-import { Person } from "#/types";
+import { Person, Expense } from "#/types";
 import { types, Instance, getSnapshot, applySnapshot } from "mobx-state-tree";
 
-import { GroupStore, GroupStoreType } from "./group";
+import { ExpenseStore } from "./expense";
 import { PersonStore } from "./person";
 
 export const Store = types
   .model("Store", {
     encryptionKey: types.maybeNull(types.string),
     persons: types.array(PersonStore),
-    groups: types.array(GroupStore),
+    expenses: types.array(ExpenseStore),
   })
   .actions((self) => ({
     setEncryptionKey(previousKey: string, newKey: string): void {
@@ -17,7 +17,9 @@ export const Store = types
       }
     },
     stopEncryption(previousEncryptionKey: string): void {
-      this.setEncryptionKey(previousEncryptionKey, "");
+      if (self.encryptionKey === previousEncryptionKey) {
+        self.encryptionKey = null;
+      }
     },
     addPerson(personInfo: Person): void {
       const person = PersonStore.create({ ...personInfo });
@@ -31,18 +33,16 @@ export const Store = types
         self.persons.remove(matchedPerson);
       }
     },
-    addGroup(group: GroupStoreType): void {
-      const isGroupDuplicate = self.groups.find(({ id }) => id === group.id) != null;
+    addExpense(expenseInfo: Expense): void {
+      const expense = ExpenseStore.create({ ...expenseInfo });
 
-      if (!isGroupDuplicate) {
-        self.groups.push(group);
-      }
+      self.expenses.push(expense);
     },
-    deleteGroup(id: string): void {
-      const matchedGroup = self.groups.find((group) => group.id === id);
+    deleteExpense(id: string): void {
+      const matchedExpense = self.expenses.find((expense) => expense.id === id);
 
-      if (matchedGroup != null) {
-        self.groups.remove(matchedGroup);
+      if (matchedExpense != null) {
+        self.expenses.remove(matchedExpense);
       }
     },
     getSchemaAsJSON(): string {
@@ -70,7 +70,7 @@ export const Store = types
     },
     reset(): void {
       self.encryptionKey = null;
-      self.groups.clear();
+      self.expenses.clear();
       self.persons.clear();
     },
   }));
@@ -78,7 +78,7 @@ export const Store = types
 export type StoreType = Instance<typeof Store>;
 
 export const store = Store.create({
-  groups: [],
+  expenses: [],
   persons: [],
   encryptionKey: null,
 });
