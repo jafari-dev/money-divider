@@ -2,6 +2,8 @@ import { CurrencyUnit } from "#/types";
 import { generateId } from "#/utilities";
 import { types, Instance } from "mobx-state-tree";
 
+import { PersonStore, PersonStoreType } from "./person";
+
 export const ExpenseStore = types
   .model("Expense", {
     id: types.optional(types.identifier, () => generateId()),
@@ -9,37 +11,57 @@ export const ExpenseStore = types
     description: types.string,
     currencyUnit: types.enumeration(Object.values(CurrencyUnit)),
     totalCost: types.number,
-    payerId: types.string,
-    debtors: types.array(types.frozen<{ id: string; amountOfDebt: number }>()),
+    date: types.Date,
+    payer: types.reference(PersonStore),
+    debts: types.array(
+      types.model("Debt", {
+        owner: types.reference(PersonStore),
+        amount: types.number,
+      })
+    ),
   })
   .actions((self) => ({
-    editTitleAndDescription(title: string, description: string): void {
+    editTitle(title: string): void {
       self.title = title;
+    },
+    editDescription(description: string): void {
       self.description = description;
     },
     editFinancialInfo(info: {
-      payerId: string;
+      payer: PersonStoreType;
       totalCost: number;
       currencyUnit: CurrencyUnit;
     }): void {
-      const { payerId, totalCost, currencyUnit } = info;
+      const { payer, totalCost, currencyUnit } = info;
 
-      self.payerId = payerId;
+      self.payer = payer;
       self.totalCost = totalCost;
       self.currencyUnit = currencyUnit;
     },
-    addDebtor(id: string, amountOfDebt: number): void {
-      const isDebtorDuplicate = self.debtors.find((debtor) => debtor.id === id) != null;
+    editDate(date: Date): void {
+      self.date = date;
+    },
+    addDebt(owner: PersonStoreType, amount: number): void {
+      const isDebtOwnerDuplicate = self.debts.find((debt) => debt.owner === owner) != null;
 
-      if (!isDebtorDuplicate) {
-        self.debtors.push({ id, amountOfDebt });
+      if (!isDebtOwnerDuplicate) {
+        self.debts.push({ owner, amount });
       }
     },
-    deleteDebtor(id: string): void {
-      const matchedDebtor = self.debtors.find((debtor) => debtor.id === id);
+    deleteDebt(owner: PersonStoreType): void {
+      const matchedDebt = self.debts.find((debt) => debt.owner === owner);
 
-      if (matchedDebtor != null) {
-        self.debtors.remove(matchedDebtor);
+      if (matchedDebt != null) {
+        self.debts.remove(matchedDebt);
+      }
+    },
+    editDebt(previousOwner: PersonStoreType, newOwner: PersonStoreType, newAmount: number): void {
+      const matchedDebt = self.debts.find((debt) => debt.owner === previousOwner);
+      const isNewOwnerNonDebtor = self.debts.every((debt) => debt.owner === newOwner);
+
+      if (matchedDebt != null && isNewOwnerNonDebtor) {
+        matchedDebt.owner = newOwner;
+        matchedDebt.amount = newAmount;
       }
     },
   }));
