@@ -91,9 +91,3 @@ export const Store = types
   }));
 
 export type StoreType = Instance<typeof Store>;
-
-export const store = Store.create({
-  expenses: [],
-  persons: [],
-  encryptionKey: null,
-});
