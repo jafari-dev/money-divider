@@ -4,6 +4,7 @@ import { colors, Tooltip, Button } from "@mui/material";
 import { ExpenseStoreType } from "@stores";
 import { observer } from "mobx-react-lite";
 
+import { DeleteExpenseButton } from "..";
 import { Paper, Section, Row, SectionHeading, Title, Description, Actions } from "./styles";
 
 interface Props {
@@ -68,9 +69,7 @@ function ExpenseCard({ expense }: Props) {
         <Button variant="contained" color="info" size="small">
           Edit
         </Button>
-        <Button variant="outlined" color="error" size="small">
-          Delete
-        </Button>
+        <DeleteExpenseButton expenseId={expense.id} />
       </Actions>
     </Paper>
   );
