@@ -1,7 +1,7 @@
 import { downloadContent } from "#/utilities";
 import { TopBar, NavigationMenu, GlobalWrapper, Home } from "@layouts";
 import { Container } from "@mui/material";
-import { People } from "@pages";
+import { People, Expenses } from "@pages";
 import { useStore } from "@stores";
 import { observer } from "mobx-react-lite";
 import { useCallback } from "react";
@@ -22,6 +22,7 @@ function Application(): React.ReactElement {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/people/*" element={<People />} />
+            <Route path="/expenses/*" element={<Expenses />} />
           </Routes>
         </GlobalWrapper>
       </Container>
