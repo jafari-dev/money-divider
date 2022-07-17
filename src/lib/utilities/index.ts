@@ -18,6 +18,16 @@ export function getAvatarName(name: string): string {
   return firstLetter + secondLetter;
 }
 
+export function formatDate(date: Date): [string, string] {
+  // Date with YYYY-DD-MM format
+  const dateAsString = date.toLocaleDateString().split("/").reverse().join("-");
+
+  // Time with HH:MM format
+  const timeAsString = date.toTimeString().split(" ")[0].slice(0, 5).replace(/:/g, ":");
+
+  return [dateAsString, timeAsString];
+}
+
 export function downloadContent(content: string): void {
   const TYPE = "text/plain;charset=utf-8";
   const contentAsBlob = new Blob([content], { type: TYPE });
