@@ -1,5 +1,3 @@
-import { PersonStoreType } from "@stores";
-
 export enum MajorPath {
   Overview = "overview",
   Expenses = "expenses",
@@ -24,6 +22,6 @@ export interface Expense {
   currencyUnit: CurrencyUnit;
   totalCost: number;
   date: Date;
-  payer: PersonStoreType;
-  debts: { owner: PersonStoreType; amount: number }[];
+  payerId: string;
+  debts: { ownerId: string; amount: number }[];
 }

@@ -33,12 +33,7 @@ export const Store = types
         self.persons.remove(matchedPerson);
       }
     },
-    addExpense(
-      expenseInfo: Omit<Expense, "payer" | "debts"> & {
-        payerId: string;
-        debts: { ownerId: string; amount: number }[];
-      }
-    ): void {
+    addExpense(expenseInfo: Expense): void {
       const { title, description, totalCost, date, payerId, currencyUnit, debts } = expenseInfo;
 
       const expense = ExpenseStore.create({
