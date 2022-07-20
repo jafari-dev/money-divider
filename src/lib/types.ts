@@ -25,3 +25,8 @@ export interface Expense {
   payerId: string;
   debts: { ownerId: string; amount: number }[];
 }
+
+export interface SelectorOption {
+  id: string;
+  label: string;
+}

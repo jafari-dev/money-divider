@@ -67,3 +67,20 @@ export const Actions = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
+
+export const EmptyListWrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+  > svg {
+    width: 300px;
+    height: auto;
+  }
+
+  h6 {
+    margin-bottom: 16px;
+  }
+`;
